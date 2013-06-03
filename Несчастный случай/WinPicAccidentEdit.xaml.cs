@@ -31,18 +31,22 @@ namespace Несчастный_случай
 
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        /*Загрузчик*/
         {
             ColCurrent = ((CollectionViewSource)(this.FindResource("accidentViewSource")));
             ColCurrent.Source = ColPhoto.Source;
             ColCurrent.View.MoveCurrentToPosition(ColPhoto.View.CurrentPosition);
         }
 
+
         private Несчастный_случай.DataSet1 ds1;
         private CollectionViewSource ColPhoto;
         private CollectionViewSource ColCurrent;
         private Int32 AID;
 
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        /*Обработчик кнопки добавить новые фотографии*/
         {
             string exepath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             OpenFileDialog dlg = new OpenFileDialog();
@@ -73,7 +77,9 @@ namespace Несчастный_случай
             }
         }
 
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
+        /*Обработчик кнопки удалить*/
         {
             if (ListBoxPhoto.SelectedItem != null)
             {
@@ -89,7 +95,9 @@ namespace Несчастный_случай
                 MessageBox.Show("Выберите картинку", "Ошибка");
         }
 
+
         private void Button_Click_3(object sender, RoutedEventArgs e)
+        /*Обработчик кнопки закрыть*/
         {
             this.Close();
         }

@@ -1,0 +1,93 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinAccidentShow"
+        xmlns:conv="clr-namespace:NSConverter"
+        Title="WinAccidentShow" Height="700" Width="1000" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <local:DataSet1 x:Key="dataSet1"/>
+        <CollectionViewSource x:Key="accidentViewSource" Source="{Binding Accident, Source={StaticResource dataSet1}}"/>
+        <CollectionViewSource x:Key="accidentCommentViewSource" Source="{Binding TabNS_IDTabKomS, Source={StaticResource accidentViewSource}}"/>
+
+    </Window.Resources>
+    <ScrollViewer>
+        <Grid DataContext="{StaticResource accidentViewSource}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto" MaxHeight="22"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Image  Name="img1" Height="250" Width="250" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                <Image.Source>
+                    <Binding Path="PicturePath" >
+                        <Binding.Converter>
+                            <conv:PathConverter/>
+                        </Binding.Converter>
+                    </Binding>
+                </Image.Source>
+            </Image>
+            <TextBlock Grid.Column="2" Grid.Row="0" TextAlignment="Center" FontSize="24" FontStyle="Oblique" FontWeight="ExtraBold" TextWrapping="Wrap" Text="{Binding Name}" />
+            <RichTextBox Name="RichTextBox1" Height="auto" Grid.Column="2" Grid.Row="1" Grid.RowSpan="12" BorderThickness="0"  VerticalScrollBarVisibility="Auto"   />
+            <TextBlock Grid.Column="0" Grid.Row="2" FontSize="15"  FontStyle="Oblique" FontWeight="Medium" Text="Возраст пострадавшего"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" FontSize="15" FontStyle="Oblique"  Text="{Binding Age}"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Пол пострадавшего"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" FontSize="15" FontStyle="Oblique"  Text="{Binding Gender}"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Образование"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" FontSize="15" FontStyle="Oblique"  Text="{Binding Education}"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Социальный статус"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" FontSize="15" FontStyle="Oblique"  Text="{Binding SocialStatus}"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Результат происшествия"/>
+            <TextBlock Grid.Column="1" Grid.Row="6" FontSize="15" FontStyle="Oblique"  Text="{Binding Result}"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Наличие криминала"/>
+            <TextBlock Grid.Column="1" Grid.Row="7" FontSize="15" FontStyle="Oblique"  Text="{Binding IsCrime}"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Дата происшествия"/>
+            <TextBlock Grid.Column="1" Grid.Row="8" FontSize="15" FontStyle="Oblique"  Text="{Binding IncidentData}"/>
+            <TextBlock Grid.Column="0" Grid.Row="9" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Место происшествия"/>
+            <TextBlock Grid.Column="1" Grid.Row="9" FontSize="15" FontStyle="Oblique"  Text="{Binding PlaceIncident}"/>
+            <TextBlock Grid.Column="0" Grid.Row="10" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Характер происшествия"/>
+            <TextBlock Grid.Column="1" Grid.Row="10" FontSize="15" FontStyle="Oblique"  Text="{Binding Conditions}"/>
+            <TextBlock Grid.Column="0" Grid.Row="11" FontSize="15" FontStyle="Oblique" FontWeight="Medium" Text="Источник информации"/>
+            <TextBlock Grid.Column="1" Grid.Row="11" FontSize="15" FontStyle="Oblique"  Text="{Binding Source}"/>
+            <TextBlock Grid.Column="2" Grid.Row="13" FontSize="24" FontStyle="Italic" FontWeight="SemiBold" Text="Коментарии"/>
+            <ListBox Name="lb" Grid.Column="2" Grid.Row="14" ItemsSource="{Binding Source={StaticResource accidentCommentViewSource}}" SelectedValuePath="ID" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel>
+                            <Image />
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" TextWrapping="Wrap" Width="{Binding ElementName=lb, Path=ActualWidth}" Text="{Binding FIO}"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Width="{Binding ElementName=lb, Path=ActualWidth}" Text="{Binding Group }"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Width="{Binding ElementName=lb, Path=ActualWidth}" Text="{Binding E-Mail }"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Width="{Binding ElementName=lb, Path=ActualWidth}" Text="{Binding DataComment }"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Width="{Binding ElementName=lb, Path=ActualWidth}" Text="{Binding TextComment }"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="Addcoment" Content="Добавить коментарий" Grid.Column="2" Grid.Row="15" FontSize="15" FontWeight="Black" Click="Addcoment_Click_1"/>
+        </Grid>
+    </ScrollViewer>
+</Window>
