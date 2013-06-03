@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
+
+/*Конвертер относительных адресов для изображений*/
+
+
 namespace NSConverter
 {
     class PathConverter:IValueConverter
@@ -13,13 +17,11 @@ namespace NSConverter
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             string path = value.ToString();
-            if (path=="")
-                path="C:\\Users\\Emgir\\Documents\\Visual Studio 2012\\Projects\\Несчастный случай\\Несчастный случай\\bin\\Debug\\MainPicture\\notmianfoto.png";
+            string exepath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            if (path=="")   //проверка наличия основного изображения
+                path=exepath+"\\MainPicture\\notmianfoto.png";
             else
-            {
-                string exepath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 path = exepath + path;
-            }
             return path;
         }
 

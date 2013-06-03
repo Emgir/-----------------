@@ -16,6 +16,7 @@ namespace Несчастный_случай
 {
     /// <summary>
     /// Логика взаимодействия для WinDangerEdit.xaml
+    /// Обрабатывает взяимодействие с формой для добавления опасности
     /// </summary>
     public partial class WinDangerEdit : Window
     {

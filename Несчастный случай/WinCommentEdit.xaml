@@ -1,17 +1,17 @@
-﻿<Window
+﻿<!--Форма для добавления и редактирования комментария к случаю-->
+    
+    
+    <Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinCommentEdit"
         Title="WinCommentEdit" Height="600" Width="593" Loaded="Window_Loaded_1">
     <Window.Resources>
         <local:DataSet1 x:Key="dataSet1"/>
-        <CollectionViewSource x:Key="dangerViewSource" Source="{Binding Danger, Source={StaticResource dataSet1}}"/>
-        <CollectionViewSource x:Key="dangerCategoryViewSource" Source="{Binding Danger_Category, Source={StaticResource dangerViewSource}}"/>
-        <CollectionViewSource x:Key="dangerCategoryAccidentViewSource" Source="{Binding Category_Accident, Source={StaticResource dangerCategoryViewSource}}"/>
-        <CollectionViewSource x:Key="dangerCategoryAccidentCommentViewSource" Source="{Binding TabNS_IDTabKomS, Source={StaticResource dangerCategoryAccidentViewSource}}"/>
+        <CollectionViewSource x:Key="commentViewSource" Source="{Binding Comment, Source={StaticResource dataSet1}}"/>
     </Window.Resources>
-    <Grid>
-        <Grid x:Name="grid1" DataContext="{StaticResource dangerCategoryAccidentCommentViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="459" Width="565">
+    <Grid DataContext="{StaticResource commentViewSource}">
+        <Grid x:Name="grid1" DataContext="{StaticResource commentViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="459" Width="565">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

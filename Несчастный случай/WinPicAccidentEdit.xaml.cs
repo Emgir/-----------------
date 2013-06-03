@@ -18,6 +18,7 @@ namespace Несчастный_случай
 {
     /// <summary>
     /// Логика взаимодействия для WinPicAccidentEdit.xaml
+    /// Обрабатывает взаимодействие с формой для добавления новых фотографий
     /// </summary>
     public partial class WinPicAccidentEdit : Window
     {
@@ -39,6 +40,7 @@ namespace Несчастный_случай
         }
 
 
+        /*Локальные переменные используемые внутри формы*/
         private Несчастный_случай.DataSet1 ds1;
         private CollectionViewSource ColPhoto;
         private CollectionViewSource ColCurrent;
