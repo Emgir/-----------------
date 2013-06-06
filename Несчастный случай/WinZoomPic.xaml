@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinZoomPic"
+        xmlns:conv="clr-namespace:NSConverter"
+        Title="WinZoomPic" Height="800" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:DataSet1 x:Key="dataSet1"/>
+        <CollectionViewSource x:Key="photoViewSource" Source="{Binding Photo, Source={StaticResource dataSet1}}"/>       
+    </Window.Resources>
+    <Grid DataContext="{StaticResource photoViewSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Name="img" Grid.Column="0" Grid.Row="0" MouseDown="img_MouseDown">
+            <Image.Source>
+                <Binding Path="PhotoPath">
+                    <Binding.Converter>
+                        <conv:PathConverter/>
+                    </Binding.Converter>
+                </Binding>
+            </Image.Source>
+        </Image>
+    </Grid>
+</Window>

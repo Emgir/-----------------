@@ -53,8 +53,8 @@ namespace Несчастный_случай
             string exepath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.InitialDirectory = exepath + "\\MorePicture\\";
-            dlg.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.WMF)|*.BMP;*.JPG;*.GIF;*.WMF";
-            dlg.DefaultExt = "*.BMP;*.JPG;*.GIF;*.WMF";
+            dlg.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF";
+            dlg.DefaultExt = "*.BMP;*.JPG;*.GIF";
             dlg.FilterIndex = 2;
             dlg.RestoreDirectory = true;
             dlg.Multiselect = true;

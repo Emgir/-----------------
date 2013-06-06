@@ -23,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Текст комментария:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <TextBox x:Name="textCommentTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="340" Margin="3,7,-281,-312" Grid.Row="3" Text="{Binding TextComment, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="413"/>
+            <TextBox x:Name="textCommentTextBox" Grid.Column="1"  HorizontalAlignment="Left" Height="340" Margin="3,7,-281,-312" Grid.Row="3" Text="{Binding TextComment, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="413" AcceptsReturn="True" TextWrapping="Wrap"/>
             <Label Content="Фамилия и инициалы:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <TextBox x:Name="fIOTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,6,-284,6" Grid.Row="0" Text="{Binding FIO, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="413"/>
             <Label Content="Группа:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>

@@ -6,7 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinPicAccidentEdit"
         xmlns:conv="clr-namespace:NSConverter"
-        Title="WinPicAccidentEdit" Height="300" Width="300" Loaded="Window_Loaded_1">
+        Title="WinPicAccidentEdit" Height="400" Width="300" Loaded="Window_Loaded_1">
     <Window.Resources>
         <local:DataSet1 x:Key="dataSet1"/>
         <CollectionViewSource x:Key="accidentViewSource" Source="{Binding Accident, Source={StaticResource dataSet1}}"/>
@@ -26,25 +26,23 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock Name="tb" TextAlignment="Center" FontSize="24" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Name}"/>
-        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" >
-            <ListBox Name="ListBoxPhoto"   Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" Margin="0,0,0,-181"  ItemsSource="{Binding Source={StaticResource accidentPhotoViewSource}}" SelectedValuePath="ID">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>                    
-                        <Grid>
-                            <Image Height="120" Width="80" >
-                                <Image.Source>
-                                    <Binding  Path="PhotoPath">
-                                        <Binding.Converter>
-                                            <conv:PathConverter/>
-                                        </Binding.Converter>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>       
+        <ListBox Name="ListBoxPhoto" Height="320" Grid.Column="0" Grid.Row="1" Grid.RowSpan="5" Margin="0,0,0,-181"  ItemsSource="{Binding Source={StaticResource accidentPhotoViewSource}}" SelectedValuePath="ID">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Height="120" Width="80" >
+                            <Image.Source>
+                                <Binding  Path="PhotoPath">
+                                    <Binding.Converter>
+                                        <conv:PathConverter/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Button Content="Добавить фотографию" Grid.Column="1" Grid.Row="1" Click="Button_Click_1"/>
         <Button Content="Удалить" Grid.Column="1" Grid.Row="2" Click="Button_Click_2"/>
         <Button Content="Закрыть" Grid.Column="1" Grid.Row="3" Click="Button_Click_3"/>

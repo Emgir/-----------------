@@ -52,7 +52,7 @@ namespace Несчастный_случай
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         /*Загрузчик*/
         {
-            ColCurrent = ((CollectionViewSource)(this.FindResource("dangerCategoryAccidentViewSource")));
+            ColCurrent = ((CollectionViewSource)(this.FindResource("accidentViewSource")));
             ColCurrent.Source = ColAccident.Source;
             ColCurrent.View.MoveCurrentToPosition(ColAccident.View.CurrentPosition);
         }
@@ -62,17 +62,17 @@ namespace Несчастный_случай
         /* Обработчик нажатия  кнопки "добавить" для listbox  
          добавляет новую запись в таблицу Comment */
         {
-            WinAccidentEdit w = new WinAccidentEdit(ds1, ((CollectionViewSource)(this.FindResource("accidentCommentViewSource"))),
-              (int)((System.Data.DataRowView)lb.SelectedItem).Row["ID"]); //инициализация окна редактора
+            WinCommentEdit w = new WinCommentEdit(ds1, ((CollectionViewSource)(this.FindResource("accidentCommentViewSource"))),
+              (int)(((System.Data.DataRowView)((ColAccident.View).CurrentItem)).Row).ItemArray[0]); //инициализация окна редактора
             w.ShowDialog();  //вызов окна редактора
         }
 
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
-        /* Обработчик нажатия  кнопки "добавить" для listbox  
+        /* Обработчик нажатия  кнопки "редактировать" для listbox  
          добавляет новую запись в таблицу Comment */
         {
-            WinCommentEdit w = new WinCommentEdit(ds1,((CollectionViewSource)(this.FindResource("accidentCommentSource")));
+            WinCommentEdit w = new WinCommentEdit(ds1, ((CollectionViewSource)(this.FindResource("accidentCommentViewSource"))));
             w.ShowDialog();
         }
 
@@ -83,8 +83,8 @@ namespace Несчастный_случай
         {
             if (lb.SelectedItem != null) //Обработчик корректности выбора случая
             {
-                MessageBoxResult rez = MessageBox.Show("Уверены что хотите удалить категорию - "
-                    + ((System.Data.DataRowView)lb.SelectedItem).Row["Name"],
+                MessageBoxResult rez = MessageBox.Show("Уверены что хотите удалить комментарий - "
+                    + ((System.Data.DataRowView)lb.SelectedItem).Row["ID"],
                     "Внимание", MessageBoxButton.YesNo);
                 if (rez == MessageBoxResult.Yes)   //защита от случайного удаления
                 {
@@ -94,6 +94,19 @@ namespace Несчастный_случай
             }
             else
                 MessageBox.Show("Выберите случай", "Ошибка"); 
+        }
+
+
+        private void img1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WinZoomMainPic w = new WinZoomMainPic(ds1, ColAccident);
+            w.ShowDialog();
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WinZoomPic w = new WinZoomPic(ds1, ((CollectionViewSource)(this.FindResource("accidentPhotoViewSource"))));
+            w.ShowDialog();
         }
 
     }

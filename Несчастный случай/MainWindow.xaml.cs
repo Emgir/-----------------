@@ -44,7 +44,7 @@ namespace Несчастный_случай
         {
             WinDangerEdit w = new WinDangerEdit(ds, ((CollectionViewSource)(this.FindResource("dangerViewSource"))), true); //инициализация окна редактора
             w.ShowDialog(); //вызов окна редактора
-        }
+        }        
 
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
@@ -98,6 +98,22 @@ namespace Несчастный_случай
             }
             else
                 MessageBox.Show("Выберите опасность", "Ошибка");                                  
+        }
+
+
+        private void MenuItem_Click_7(object sender, RoutedEventArgs e)
+        /* Обработчик нажатия  кнопки "Корректировать" для listbox 2 
+        добавляет новую запись в таблицу category */
+        {
+            if (this.FindResource("dangerCategoryViewSource") != null && lb1.SelectedItem != null)  //Обработчик корректности выбора категории
+            {
+                WinCatChangeDanger w = new WinCatChangeDanger(ds,
+                ((CollectionViewSource)(this.FindResource("dangerCategoryViewSource"))),
+                ((CollectionViewSource)(this.FindResource("dangerViewSource"))));
+                w.ShowDialog(); //вызов окна редактора               
+            }
+            else
+                MessageBox.Show("Выберите опасность", "Ошибка"); 
         }
 
 
@@ -157,6 +173,21 @@ namespace Несчастный_случай
         }
 
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.FindResource("dangerCategoryAccidentViewSource") != null && 
+                lb2.SelectedItem != null)  //Обработчик корректности выбора категории
+            {
+                WinAccidentChangeDander w = new WinAccidentChangeDander(ds,
+                ((CollectionViewSource)(this.FindResource("dangerCategoryAccidentViewSource"))),
+                ((CollectionViewSource)(this.FindResource("categoryViewSource"))));
+                w.ShowDialog(); //вызов окна редактора               
+            }
+            else
+                MessageBox.Show("Выберите опасность", "Ошибка"); 
+        }
+
+
         private void MenuItem_Click_6(object sender, RoutedEventArgs e)
         /* Обработчик нажатия кнопки "удалить" для listbox 3
          удаляет выбраную запись из таблицы accident */
@@ -199,7 +230,6 @@ namespace Несчастный_случай
             }
             else
                 MessageBox.Show("Выберите случай!", "Ошибка");
-        }
-        
+        } 
     }
 }

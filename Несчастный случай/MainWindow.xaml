@@ -7,6 +7,7 @@
     <Window.Resources>
         <local:DataSet1 x:Key="dataSet1"/>
         <CollectionViewSource x:Key="dangerViewSource" Source="{Binding Danger, Source={StaticResource dataSet1}}"/>
+        <CollectionViewSource x:Key="categoryViewSource" Source="{Binding Category, Source={StaticResource dataSet1}}"/>
         <CollectionViewSource x:Key="dangerCategoryViewSource" Source="{Binding Danger_Category, Source={StaticResource dangerViewSource}}"/>
         <CollectionViewSource x:Key="dangerCategoryAccidentViewSource" Source="{Binding Category_Accident, Source={StaticResource dangerCategoryViewSource}}"/>
     </Window.Resources>
@@ -33,7 +34,8 @@
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Добавить..." Click="MenuItem_Click_3"/>
-                    <MenuItem Header="Удалить" Click="MenuItem_Click_4" />
+                    <MenuItem Header="Корректировать опасность" Click="MenuItem_Click_7"/>
+                    <MenuItem Header="Удалить" Click="MenuItem_Click_4" />                    
                 </ContextMenu>
             </ListBox.ContextMenu>    
         </ListBox>
@@ -41,6 +43,7 @@
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Добавить.." Click="MenuItem_Click_5"/>
+                    <MenuItem Header="Корректировать опасность" Click="MenuItem_Click"/>
                     <MenuItem Header="Удалить" Click="MenuItem_Click_6"/>
                 </ContextMenu>
             </ListBox.ContextMenu>

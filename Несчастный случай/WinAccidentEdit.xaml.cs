@@ -85,7 +85,11 @@ conditionsComboBox.Text,sourceTextBox.Text,row,photopath,docpath,Int32.Parse(age
             {
                 if (photopath!=null)
                 {
-                    
+                    (((System.Data.DataRowView)((ColAccident.View).CurrentItem)).Row)["PicturePath"] = photopath;
+                }
+                if (docpath!=null)
+                {
+                    (((System.Data.DataRowView)((ColAccident.View).CurrentItem)).Row)["DocPath"] = docpath;
                 }
             }
             ds1.SaveXml(); //созранение изменений базы данных
@@ -164,6 +168,5 @@ conditionsComboBox.Text,sourceTextBox.Text,row,photopath,docpath,Int32.Parse(age
                 }
             }
         }
-
     }
 }

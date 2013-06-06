@@ -39,7 +39,6 @@ namespace Несчастный_случай
             ds1 = ds;
             ColCategory = dangerCategoryViewSource;
             Add = false;
-
         }
 
 
@@ -56,7 +55,7 @@ namespace Несчастный_случай
         {
             if ((!Add))//при редактировании получаем выбранный элемент базы
             {
-                ColCurrent = ((CollectionViewSource)(this.FindResource("dangerCategoryViewSource")));
+                ColCurrent = ((CollectionViewSource)(this.FindResource("categoryViewSource")));
                 ColCurrent.Source = ColCategory.Source;
                 ColCurrent.View.MoveCurrentToPosition(ColCategory.View.CurrentPosition);
             }
