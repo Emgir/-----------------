@@ -33,6 +33,7 @@ namespace Несчастный_случай
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        /*Загрузчик*/
         {
             ColCurrent = ((CollectionViewSource)(this.FindResource("accidentViewSource")));
             ColCurrent.Source = ColAccident.Source;
@@ -41,6 +42,7 @@ namespace Несчастный_случай
 
 
         private void img_MouseDown(object sender, MouseButtonEventArgs e)
+        /*Обработчик клика на картинку*/
         {
             this.Close();
         }

@@ -103,7 +103,7 @@ namespace Несчастный_случай
 
         private void MenuItem_Click_7(object sender, RoutedEventArgs e)
         /* Обработчик нажатия  кнопки "Корректировать" для listbox 2 
-        добавляет новую запись в таблицу category */
+        изменяет опасность категории */
         {
             if (this.FindResource("dangerCategoryViewSource") != null && lb1.SelectedItem != null)  //Обработчик корректности выбора категории
             {
@@ -174,6 +174,8 @@ namespace Несчастный_случай
 
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
+        /* Обработчик нажатия  кнопки "Корректировать" для listbox 3 
+         изменяет категорию "несчастного случая" */
         {
             if (this.FindResource("dangerCategoryAccidentViewSource") != null && 
                 lb2.SelectedItem != null)  //Обработчик корректности выбора категории
@@ -230,6 +232,11 @@ namespace Несчастный_случай
             }
             else
                 MessageBox.Show("Выберите случай!", "Ошибка");
+        }
+
+        private void lb3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         } 
     }
 }

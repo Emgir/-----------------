@@ -1,8 +1,10 @@
-﻿<Window
+﻿<!--Форма для изменения привязки категории к опасности-->
+    
+    <Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinCatChangeDanger"
-        Title="WinCatChangeDanger" Height="150" Width="400" Loaded="Window_Loaded">
+        Title="Изменение опасности категории" Height="150" Width="450" Loaded="Window_Loaded">
     <Window.Resources>
         <local:DataSet1 x:Key="dataSet1"/>
         <CollectionViewSource x:Key="categoryViewSource" Source="{Binding Category, Source={StaticResource dataSet1}}"/>
@@ -10,8 +12,8 @@
         <CollectionViewSource x:Key="dangerCategoryViewSource" Source="{Binding Danger_Category, Source={StaticResource dangerViewSource}}"/>
     </Window.Resources>
     <Grid>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Height="25" Margin="256,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Height="25" Margin="256,49,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Height="25" Margin="306,10,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Height="25" Margin="306,49,0,0" VerticalAlignment="Top" Width="126" Click="Button_Click_1"/>
         <Grid x:Name="grid1" DataContext="{StaticResource categoryViewSource}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -21,7 +23,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Content="Danger ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Опасность:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="dangerIDComboBox" Grid.Column="1" DisplayMemberPath="Name" HorizontalAlignment="Left" Height="Auto" 
                       ItemsSource="{Binding Source={StaticResource dangerViewSource}}" Margin="3" Grid.Row="0" VerticalAlignment="Center"
                       Width="120"  SelectedValue="{Binding DangerID}">
@@ -31,7 +33,7 @@
                     </ItemsPanelTemplate>
                 </ComboBox.ItemsPanel>
             </ComboBox>
-            <Label Content="Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Content="Название категории:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
             <TextBlock x:Name="nameTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1" Text="{Binding Name}" VerticalAlignment="Center"/>
         </Grid>
     </Grid>

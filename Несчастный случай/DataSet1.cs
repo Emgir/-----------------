@@ -2,6 +2,9 @@
     
     
     public partial class DataSet1 {
+        partial class AccidentDataTable
+        {
+        }
 
         public void LoadXml()
         {

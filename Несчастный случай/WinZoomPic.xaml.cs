@@ -20,6 +20,7 @@ namespace Несчастный_случай
     public partial class WinZoomPic : Window
     {
         public WinZoomPic(Несчастный_случай.DataSet1 ds, CollectionViewSource photoViewSource)
+        /*Окно для показа увеличенной фотографии*/
         {
             InitializeComponent();
             ds1 = ds;
@@ -27,12 +28,14 @@ namespace Несчастный_случай
         }
 
 
+        /*Локальные переменные*/
         private CollectionViewSource ColPhoto;
         private CollectionViewSource ColCurrent;
         private Несчастный_случай.DataSet1 ds1;
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        /*Загрузчик*/
         {
             ColCurrent = ((CollectionViewSource)(this.FindResource("photoViewSource")));
             ColCurrent.Source = ColPhoto.Source;
@@ -41,8 +44,23 @@ namespace Несчастный_случай
 
 
         private void img_MouseDown(object sender, MouseButtonEventArgs e)
+        /*Обработчик клика по картинке(картинка закроется)*/
         {
             this.Close();
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        /*Переключение на предыдущую картинку*/
+        {
+            ColCurrent.View.MoveCurrentToPrevious();
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /*Переключение на следующую картинку*/
+        {
+            ColCurrent.View.MoveCurrentToNext();
         }
     }
 }

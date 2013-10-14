@@ -1,9 +1,12 @@
-﻿<Window
+﻿<!--Форма демонстрации основной фотографии-->
+    
+    
+    <Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:conv="clr-namespace:NSConverter"
         xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinZoomMainPic"
-        Title="WinZoomMainPic" Height="800" Width="800" Loaded="Window_Loaded">
+        Title="Главная фотография" Height="800" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <local:DataSet1 x:Key="dataSet1"/>
         <CollectionViewSource x:Key="accidentViewSource" Source="{Binding Accident, Source={StaticResource dataSet1}}"/>

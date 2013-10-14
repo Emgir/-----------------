@@ -39,6 +39,7 @@ namespace Несчастный_случай
 
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        /*Загрузчик*/
         {
             if ((!Add)) //при редактировании получаем выбранный элемент базы
             {
@@ -52,12 +53,17 @@ namespace Несчастный_случай
         private void Button_Click_1(object sender, RoutedEventArgs e) 
         /* Обработчик кнопки сохранить */
         {
-            if (Add)    //При добавлении новой записи
+            if (nameTextBox.Text != "")
             {
-                ds1.Danger.AddDangerRow(nameTextBox.Text); //запись в базу данных новой 
+                if (Add)    //При добавлении новой записи
+                {
+                    ds1.Danger.AddDangerRow(nameTextBox.Text); //запись в базу данных новой 
+                }
+                ds1.SaveXml(); //сохранение изменений в базе данных
+                this.Close(); //закрытие окна редактирования опасности
             }
-            ds1.SaveXml(); //сохранение изменений в базе данных
-            this.Close(); //закрытие окна редактирования опасности
+            else
+                MessageBox.Show("Необходимо заполнить поле 'название опасности'");
         }
 
 

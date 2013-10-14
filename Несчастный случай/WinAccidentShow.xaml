@@ -6,7 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Несчастный_случай" x:Class="Несчастный_случай.WinAccidentShow"
         xmlns:conv="clr-namespace:NSConverter"
-        Title="WinAccidentShow" Height="700" Width="1000" Loaded="Window_Loaded_1">
+        Title="Детали несчастного случая" Height="700" Width="1000" Loaded="Window_Loaded_1">
     <Window.Resources>
         <local:DataSet1 x:Key="dataSet1"/>
         <CollectionViewSource x:Key="accidentViewSource" Source="{Binding Accident, Source={StaticResource dataSet1}}"/>

@@ -31,6 +31,8 @@ namespace Несчастный_случай
             DID = DangerID;
 
         }
+       
+        
         public WinCatEdit //при редактировании
             (Несчастный_случай.DataSet1 ds,//база данных
             CollectionViewSource dangerCategoryViewSource)
@@ -49,7 +51,6 @@ namespace Несчастный_случай
         private Int32 DID; //id матернской опасности
 
 
-
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         /* Загрузчик */
         {
@@ -65,13 +66,18 @@ namespace Несчастный_случай
         private void Button_Click_1(object sender, RoutedEventArgs e)
         /* Обработчик кнопки сохранить */
         {
-            if (Add)//При добавлении новой записи
+            if (nameTextBox.Text != "")
             {
-                DataSet1.DangerRow row = ds1.Danger.Single(d => d.ID == DID); //получение строки опасности
-                ds1.Category.AddCategoryRow(row, nameTextBox.Text); //запись в базу данных новой 
+                if (Add)//При добавлении новой записи
+                {
+                    DataSet1.DangerRow row = ds1.Danger.Single(d => d.ID == DID); //получение строки опасности
+                    ds1.Category.AddCategoryRow(row, nameTextBox.Text); //запись в базу данных новой 
+                }
+                ds1.SaveXml();  //сохранение изменений в базе данных
+                this.Close();   //закрытие окна редактирования опасности
             }
-            ds1.SaveXml();  //сохранение изменений в базе данных
-            this.Close();   //закрытие окна редактирования опасности
+            else
+                MessageBox.Show("Необходимо заполнить поле 'Название категории опасности'");
         }
 
 

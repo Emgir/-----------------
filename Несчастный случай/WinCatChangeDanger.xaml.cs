@@ -32,6 +32,7 @@ namespace Несчастный_случай
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        /*Загрузчик*/
         {
             ColCurrent = ((CollectionViewSource)(this.FindResource("categoryViewSource")));
             ColCurrent.Source = ColCategory.Source;
@@ -50,6 +51,7 @@ namespace Несчастный_случай
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        /*Обработчик кнопки сохранить*/
         {
             (((System.Data.DataRowView)((ColCategory.View).CurrentItem)).Row)["DangerID"] =
                 (((System.Data.DataRowView)(dangerIDComboBox.SelectionBoxItem)).Row)["ID"];
@@ -57,12 +59,12 @@ namespace Несчастный_случай
             this.Close(); 
         }
 
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        /*Обработчик кнопки отмена*/
         {
             ds1.LoadXml();  //загрузка базы данных до изменений         
             this.Close();   //закрытие окна редактирования опасности
         }
-
-
     }
 }

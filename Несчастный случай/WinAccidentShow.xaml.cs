@@ -98,16 +98,18 @@ namespace Несчастный_случай
 
 
         private void img1_MouseDown(object sender, MouseButtonEventArgs e)
+        /*Обработчик клика по главной картинке*/
         {
             WinZoomMainPic w = new WinZoomMainPic(ds1, ColAccident);
             w.ShowDialog();
         }
 
+
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        /*Обработчик клика по дополнительной картинке*/
         {
             WinZoomPic w = new WinZoomPic(ds1, ((CollectionViewSource)(this.FindResource("accidentPhotoViewSource"))));
             w.ShowDialog();
         }
-
     }
 }

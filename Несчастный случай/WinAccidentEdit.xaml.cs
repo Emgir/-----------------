@@ -71,7 +71,18 @@ namespace Несчастный_случай
         private void Button_Click_1(object sender, RoutedEventArgs e)
         /* Обработчик кнопки сохранить */
         {
-            if (Add) //при добавлении новой записи
+            Boolean AllNeedAdd = true;//проверка заполнения полей
+            if (nameTextBox.Text == "")
+            {
+                AllNeedAdd = false;
+                MessageBox.Show("Введите название НС");
+            }
+            if (descriptionTextBox.Text=="" && AllNeedAdd)
+            {
+                AllNeedAdd = false;
+                MessageBox.Show("Введите описание НС");
+            }
+            if (Add && AllNeedAdd) //при добавлении новой записи
             {
                 if (docpath == null)
                     docpath = "";
@@ -85,15 +96,19 @@ conditionsComboBox.Text,sourceTextBox.Text,row,photopath,docpath,Int32.Parse(age
             {
                 if (photopath!=null)
                 {
-                    (((System.Data.DataRowView)((ColAccident.View).CurrentItem)).Row)["PicturePath"] = photopath;
+                    (((System.Data.DataRowView)((ColAccident.View).CurrentItem)).Row)["PhotoPath"] = photopath;
                 }
                 if (docpath!=null)
                 {
                     (((System.Data.DataRowView)((ColAccident.View).CurrentItem)).Row)["DocPath"] = docpath;
                 }
             }
-            ds1.SaveXml(); //созранение изменений базы данных
-            this.Close(); // закрытие редактора
+            if (AllNeedAdd)
+            {
+                ds1.SaveXml(); //созранение изменений базы данных
+                this.Close(); // закрытие редактора
+            }
+            
         }
 
 
@@ -167,6 +182,19 @@ conditionsComboBox.Text,sourceTextBox.Text,row,photopath,docpath,Int32.Parse(age
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+        }
+
+
+        private void ageTextBox_KeyDown(object sender, KeyEventArgs e)
+        /*ограничение возможных символов для поля textbox возраст */
+        {
+            var allowed = new[] { Key.D0, Key.D1, Key.D2, Key.D3, Key.D4, Key.D5, Key.D6,
+            Key.D7, Key.D8, Key.D9, Key.NumPad0, Key.NumPad1, Key.NumPad2, Key.NumPad3, Key.NumPad4,
+            Key.NumPad5, Key.NumPad6, Key.NumPad7, Key.NumPad8, Key.NumPad9};
+            if (allowed.Contains(e.Key))
+                e.Handled = false;
+            else
+                e.Handled = true;
         }
     }
 }
